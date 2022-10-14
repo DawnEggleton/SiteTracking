@@ -1,1 +1,1 @@
-fetchData('TOTL');
+fetchData('TOTL', 'https://totl.jcink.net/');

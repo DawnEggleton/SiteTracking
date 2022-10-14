@@ -1,1 +1,1 @@
-fetchData('KYH');
+fetchData('KYH', 'https://killyourheroeshp.jcink.net/');

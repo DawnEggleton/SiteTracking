@@ -1,0 +1,1 @@
+fetchData('Legends', 'https://legends.jcink.net/');
