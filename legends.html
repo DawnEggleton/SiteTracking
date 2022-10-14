@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!--Styles-->
+    <link rel="stylesheet" href="./src/css/styles.css" />
+
+    <!--Fonts-->
+    <link rel="stylesheet" href="https://use.typekit.net/mfe3rag.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin+Dark:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Palanquin:wght@100;200;300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!--Icons-->
+    <link href="https://dawneggleton.github.io/JcinkSkinMocks/FA6/css/all.min.css" rel="stylesheet" />
+
+    <title>Legends | Site Tracker</title>
+  </head>
+  <body>
+    <nav class="desktop">
+        <a href="./kyh.html">Kill Your Heroes</a>
+        <a href="./legends.html" class="current">Legends</a>
+        <a href="./totl.html">Turn on the Light</a>
+    </nav>
+    <nav class="mobile">
+        <button onclick="toggleMenu(this)">
+          <i class="fa-solid fa-bars"></i>
+          <i class="fa-solid fa-xmark"></i>
+        </button>
+        <div class="mobileNav">
+          <a href="./kyh.html">Kill Your Heroes</a>
+          <a href="./legends.html" class="current">Legends</a>
+          <a href="./totl.html">Turn on the Light</a>
+        </div>
+    </nav>
+    <main class="tracker">
+      <div class="loading"><i class="fa-solid fa-spinner-third fa-spin"></i></div>
+    </main>
+    <script type="text/javascript" src="./src/js/main.js"></script>
+    <script type="text/javascript" src="./src/js/legends.js"></script>
+  </body>
+</html>

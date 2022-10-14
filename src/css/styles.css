@@ -1,0 +1,187 @@
+:root {
+    --white: rgba(247,247,247,1);
+    --offwhite: rgba(236,236,236,1);
+    --ltgrey: rgba(193,193,193,1);
+    --dkgrey: rgba(100,100,100,1);
+    --accent: rgb(152, 159, 125, 1);
+
+    --bg-body: var(--offwhite);
+    --bg-content: var(--white);
+    --bg-accent: var(--accent);
+    --border-main: var(--ltgrey);
+    --text-body: var(--dkgrey);
+    --text-on-accent: var(--offwhite);
+
+    --font-body: 'Palanquin', sans-serif;
+    --font-accent: 'Palanquin Dark', sans-serif;
+    --menuWidth: 250px;
+}
+* {
+    box-sizing: border-box;
+}
+html {
+    font-size: 16px;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-body);
+    color: var(--text-body);
+    font-family: var(--font-body);
+}
+a {
+    text-decoration: none;
+    color: var(--bg-accent);
+}
+
+nav {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    padding: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    color: var(--text-on-accent);
+    font-family: var(--font-accent);
+    font-weight: 700;
+    background: var(--bg-accent);
+}
+nav.desktop {
+    display: none;
+}
+nav.mobile {
+    margin-left: 0;
+    transition-duration: 0.5s;
+}
+nav.mobile button {
+    background: none;
+    border: 0;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+nav.mobile button i {
+    color: var(--white);
+    font-size: 1.2rem;
+}
+nav.mobile button i.fa-xmark,
+nav.mobile.is-open button i.fa-bars {
+    display: none;
+}
+nav.mobile.is-open button i.fa-xmark {
+    display: initial;
+}
+nav.mobile .mobileNav {
+    position: fixed;
+    top: 0;
+    left: calc(var(--menuWidth) * -1);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    padding: 20px;
+    background: var(--bg-content);
+    height: 100vh;
+    width: var(--menuWidth);
+    transition-duration: 0.5s;
+}
+nav.mobile.is-open {
+    width: calc(100% - var(--menuWidth));
+    margin-left: var(--menuWidth);
+}
+nav.mobile.is-open .mobileNav {
+    left: 0;
+}
+nav.mobile .mobileNav a {
+    color: var(--bg-accent);
+}
+nav.mobile .mobileNav a.current,
+nav.mobile .mobileNav a:hover {
+    border-color: var(--bg-accent);
+}
+nav a {
+    color: var(--text-on-accent);
+}
+nav a.current,
+nav a:hover {
+    border-bottom: 3px solid var(--text-on-accent);
+    padding: 0 5px;
+}
+
+main {
+    padding: 20px;
+}
+
+.loading {
+    text-align: center;
+    align-self: center;
+    justify-self: center;
+}
+.loading i {
+    font-size: 3.5rem;
+    color: var(--bg-accent);
+}
+
+.tracker {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+.thread {
+    flex: 0 0 100%;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-content);
+    border-radius: 10px;
+    padding: 15px 20px;
+    font-size: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+}
+.thread.status-mine,
+.thread.status-start {
+    background: var(--bg-accent);
+    color: var(--text-on-accent);
+}
+.thread.status-mine a,
+.thread.status-start a {
+    color: var(--text-on-accent);
+}
+.thread--title {
+    font-size: 1.2rem;
+    font-family: var(--font-accent);
+    font-weight: 700;
+    letter-spacing: 0;
+}
+.thread--ic-date,
+.thread--last-post {
+    text-align: right;
+}
+
+@media only screen and (min-width: 560px) {
+    .thread {
+        flex: 0 0 calc(50% - (15px / 2));
+    }
+}
+@media only screen and (min-width: 768px) {
+    nav.desktop {
+        display: flex;
+    }
+    nav.mobile {
+        display: none;
+    }
+    main {
+        padding: 50px;
+    }
+}
+@media only screen and (min-width: 1024px) {
+    .thread {
+        flex: 0 0 calc((100% / 3) - 10px);
+    }
+}
