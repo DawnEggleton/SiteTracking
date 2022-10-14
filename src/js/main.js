@@ -50,7 +50,7 @@ function capitalize(str, separators) {
     return str.replace(regex, function(x) { return x.toUpperCase(); });
 }
 
-async function fetchData(endpoint, baseURL) {
+export async function fetchData(endpoint, baseURL) {
     const data = await fetch(`/api/fetchNotion-${endpoint}`)
         .then(response => response.json())
         .then(data => {
