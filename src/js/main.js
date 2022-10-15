@@ -58,14 +58,14 @@ export async function fetchData(endpoint, baseURL) {
             let threads = [];
             data.forEach(item => {
                 let thread = {
-                    status: item.Turn.status.name.toLowerCase().trim(),
+                    status: item.Turn.status ? item.Turn.status.name.toLowerCase().trim() : '',
                     title: item['Thread Title'].title[0] ? item['Thread Title'].title[0].plain_text.toLowerCase().trim() : '',
                     id: item.Link.url ? item.Link.url.split(`?showtopic=`)[1] : 0,
                     character: item.Character.select.name.toLowerCase().trim(),
                     partners: item.Partner.multi_select.map(partner => {return {name: partner.name.split('#')[0].toLowerCase().trim(), id: partner.name.split('#')[1]}}),
                     featuring: item.Featuring.multi_select.map(character => {return {name: character.name.split('#')[0].toLowerCase().trim(), id: character.name.split('#')[1]}}),
                     icDate: item['IC Date'].date ? new Date(item['IC Date'].date.start.replace(/-/g, '\/').replace(/T.+/, '')) : '',
-                    type: item.Type.select.name.toLowerCase().trim(),
+                    type: item.Type.select ? item.Type.select.name.toLowerCase().trim() : '',
                     lastPost: new Date(item['Last edited time'].last_edited_time.replace(/-/g, '\/').replace(/T.+/, '')),
                 }
                 threads = [...threads, thread];
@@ -139,7 +139,7 @@ export async function fetchData(endpoint, baseURL) {
                     delayClass = 'okay';
                 }
 
-                html += `<div class="thread status-${thread.status} ${thread.character.split(' ')[0]} delay--${delayClass}">
+                html += `<div class="thread lux-track status-${thread.status} ${thread.character.split(' ')[0]} delay--${delayClass}">
                     <b class="thread--character">${thread.character}</b>
                     <a href="${baseURL}?showtopic=${thread.id}" target="_blank" class="thread--title">${capitalize(thread.title, [`-`, `'`])}</a>
                     <span class="thread--feature">ft. ${charactersString}</span>
