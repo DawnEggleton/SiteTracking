@@ -18,6 +18,7 @@
 }
 * {
     box-sizing: border-box;
+    position: relative;
 }
 html {
     font-size: 16px;
@@ -145,6 +146,24 @@ main {
     letter-spacing: 1px;
     font-weight: 600;
 }
+.thread::before {
+    content: '\3f';
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    font-family: 'Font Awesome 6 Pro';
+    font-weight: 700;
+    font-size: 16px;
+}
+.thread.type--comm::before {
+    content: '\f3cd';
+}
+.thread.type--thread::before {
+    content: '\f02d';
+}
+.thread.type--oneshot::before {
+    content: '\f8c4';
+}
 .thread.status-mine,
 .thread.status-start {
     background: var(--bg-accent);
@@ -159,6 +178,9 @@ main {
     font-family: var(--font-accent);
     font-weight: 700;
     letter-spacing: 0;
+}
+.thread--partners {
+    flex-grow: 1;
 }
 .thread--ic-date,
 .thread--last-post {
