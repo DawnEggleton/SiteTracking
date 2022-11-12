@@ -115,7 +115,7 @@ nav a:hover {
 }
 
 main {
-    padding: 20px;
+    padding: 20px 5px 20px 20px;
 }
 
 .loading {
@@ -128,14 +128,55 @@ main {
     color: var(--bg-accent);
 }
 
-.tracker {
+.filters {
+    margin: 0 0 50px 0;
+    border-bottom: 1px solid var(--ltgrey);
+    padding: 0 0 50px 0;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
     gap: 15px;
 }
+.filter-group {
+    flex: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    font-size: 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.filter-group b {
+  flex: 0 0 100%;
+  font-size: 14px;
+  font-weight: 900;
+  font-family: var(--font-accent);
+  letter-spacing: 0;
+}
+.filter-group input {
+    display: none;
+}
+.filter-group input + span {
+    background: var(--bg-content);
+    padding: 3px 8px 3.5px;
+    border-radius: 5px;
+    display: block;
+    cursor: pointer;
+}
+.filter-group label:hover input + span {
+    font-weight: 700;
+    background: var(--accent);
+    color: var(--text-on-accent);
+    opacity: 0.75;
+}
+.filter-group .is-checked input + span {
+    font-weight: 700;
+    background: var(--accent);
+    color: var(--text-on-accent);
+}
+
 .thread {
-    flex: 0 0 100%;
+    width: calc(100% - 15px);
+    margin: 0 15px 15px 0;
     display: flex;
     flex-direction: column;
     background: var(--bg-content);
@@ -200,7 +241,13 @@ main {
 
 @media only screen and (min-width: 560px) {
     .thread {
+        width: calc(50% - 15px);
+    }
+    .filter-group {
         flex: 0 0 calc(50% - (15px / 2));
+    }
+    .filter-group[data-filter-group="characters"] {
+        flex: 100%;
     }
 }
 @media only screen and (min-width: 768px) {
@@ -211,11 +258,15 @@ main {
         display: none;
     }
     main {
-        padding: 50px;
+        padding: 50px 35px 50px 50px;
+    }
+    .filters {
+        margin: 0 0 20px 0;
+        padding: 0 0 20px 0;
     }
 }
 @media only screen and (min-width: 1024px) {
     .thread {
-        flex: 0 0 calc((100% / 3) - 10px);
+        width: calc((100% / 3) - 15px);
     }
 }

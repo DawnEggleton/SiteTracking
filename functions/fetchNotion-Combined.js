@@ -25,7 +25,7 @@ exports.handler = async function (event, context) {
             pagedKYH = newResponse.has_more;
         }
         dataKYH = dataKYH.map(item => item.properties);
-        data = [...dataKYH];
+        data = [dataKYH];
         try {
             const responseLEGENDS = await notion.databases.query({
                 database_id: LEGENDS_DB,
@@ -43,7 +43,7 @@ exports.handler = async function (event, context) {
                 pagedLEGENDS = newResponse.has_more;
             }
             dataLEGENDS = dataLEGENDS.map(item => item.properties);
-            data = [...data, ...dataLEGENDS];
+            data = [...data, dataLEGENDS];
             try {
                 const responseTOTL = await notion.databases.query({
                     database_id: TOTL_DB,
@@ -61,7 +61,7 @@ exports.handler = async function (event, context) {
                     pagedTOTL = newResponse.has_more;
                 }
                 dataTOTL = dataTOTL.map(item => item.properties);
-                data = [...data, ...dataTOTL];
+                data = [...data, dataTOTL];
                 return {
                     statusCode: 200,
                     body: JSON.stringify(data),
