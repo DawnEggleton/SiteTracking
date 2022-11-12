@@ -26,10 +26,36 @@
   </head>
   <body>
     <nav class="desktop">
-      <a href="index.html">Index</a>
-      <a href="kyh.html">Kill Your Heroes</a>
-      <a href="legends.html" class="current">Legends</a>
-      <a href="totl.html">Turn on the Light</a>
+      <ul>
+        <li>
+          <a href="index.html">Index</a>
+          <ul>
+            <li><a href="index.html">Thread List</a></li>
+            <li><a href="all-charts.html">Charts</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="kyh.html">Kill Your Heroes</a>
+          <ul>
+            <li><a href="kyh.html">Thread List</a></li>
+            <li><a href="kyh-charts.html">Charts</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="legends.html" class="current">Legends</a>
+          <ul>
+            <li><a href="legends.html">Thread List</a></li>
+            <li><a href="legends-charts.html">Charts</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="totl.html">Turn on the Light</a>
+          <ul>
+            <li><a href="totl.html">Thread List</a></li>
+            <li><a href="totl-charts.html">Charts</a></li>
+          </ul>
+        </li>
+      </ul>
     </nav>
     <nav class="mobile">
         <button onclick="toggleMenu(this)">
@@ -37,15 +63,42 @@
           <i class="fa-solid fa-xmark"></i>
         </button>
         <div class="mobileNav">
-          <a href="index.html">Index</a>
-          <a href="kyh.html">Kill Your Heroes</a>
-          <a href="legends.html" class="current">Legends</a>
-          <a href="totl.html">Turn on the Light</a>
+          <ul>
+            <li>
+              <a href="index.html">Index</a>
+              <ul>
+                <li><a href="index.html">Thread List</a></li>
+                <li><a href="all-charts.html">Charts</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="kyh.html">Kill Your Heroes</a>
+              <ul>
+                <li><a href="kyh.html">Thread List</a></li>
+                <li><a href="kyh-charts.html">Charts</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="legends.html" class="current">Legends</a>
+              <ul>
+                <li><a href="legends.html">Thread List</a></li>
+                <li><a href="legends-charts.html">Charts</a></li>
+              </ul>
+            </li>
+            <li>
+              <a href="totl.html">Turn on the Light</a>
+              <ul>
+                <li><a href="totl.html">Thread List</a></li>
+                <li><a href="totl-charts.html">Charts</a></li>
+              </ul>
+            </li>
+          </ul>
         </div>
     </nav>
     <main class="tracker">
       <div class="loading"><i class="fa-solid fa-spinner-third fa-spin"></i></div>
     </main>
+    <script type="text/javascript" src="./src/js/static.js"></script>
     <script type="module" src="./src/js/main.js"></script>
     <script type="module" src="./src/js/legends.js"></script>
   </body>

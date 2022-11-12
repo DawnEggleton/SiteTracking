@@ -40,14 +40,50 @@ nav {
     top: 0;
     width: 100%;
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
     color: var(--text-on-accent);
     font-family: var(--font-accent);
     font-weight: 700;
     background: var(--bg-accent);
     z-index: 100;
+}
+nav > ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+nav > ul li > ul {
+  display: none;
+  flex-direction: column;
+  position: absolute;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  width: 200px;
+  background: transparent;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+nav > ul li:hover > ul,
+nav > ul li > ul:hover {
+  display: flex;
+}
+nav > ul li > ul > li a {
+    display: block;
+    background: var(--accent);
+    border-radius: 10px;
+    padding: 3px 8px;
+    font-weight: 100;
+    font-family: var(--font-body);
+}
+nav > ul li > ul > li:first-child {
+    margin-top: 25px;
+}
+nav > ul li > ul > li a:hover {
+    border: none;
+    padding: 3px 8px 3px 13px;
 }
 nav.desktop {
     display: none;
@@ -105,6 +141,25 @@ nav.mobile .mobileNav a.current,
 nav.mobile .mobileNav a:hover {
     border-color: var(--bg-accent);
 }
+.mobileNav ul {
+    padding: 0;
+    list-style-type: none;
+}
+.mobileNav ul > li > ul {
+    padding-left: 15px;
+    margin-bottom: 15px;
+}
+.mobileNav ul > li > a.current + ul > li:first-child,
+.mobileNav ul > li > a:hover + ul > li:first-child {
+    margin-top: 5px;
+}
+.mobileNav ul > li > ul a {
+    border: none;
+    color: var(--text-body) !important;
+    font-family: var(--font-body);
+    text-transform: uppercase;
+    font-size: 12px;
+}
 nav a {
     color: var(--text-on-accent);
 }
@@ -122,6 +177,7 @@ main {
     text-align: center;
     align-self: center;
     justify-self: center;
+    grid-column: 1 / -1;
 }
 .loading i {
     font-size: 3.5rem;
@@ -239,6 +295,24 @@ main {
     --bg-accent: var(--accent);
 }
 
+.tracker.charts {
+    display: grid;
+    grid-gap: 15px;
+}
+.chart {
+    background: var(--bg-content);
+    border-radius: 10px;
+    padding: 15px 20px;
+}
+.chart b {
+    font-family: var(--font-accent);
+    text-transform: uppercase;
+    font-size: 20px;
+}
+.chart > div {
+    height: 400px !important;
+}
+
 @media only screen and (min-width: 560px) {
     .thread {
         width: calc(50% - 15px);
@@ -268,5 +342,8 @@ main {
 @media only screen and (min-width: 1024px) {
     .thread {
         width: calc((100% / 3) - 15px);
+    }
+    .tracker.charts {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

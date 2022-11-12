@@ -20,9 +20,8 @@
 
     <!--Scripts-->
     <script src="https://dawneggleton.github.io/scripts/jquery-1.12.1.min.js"></script>
-    <script src="https://unpkg.com/isotope-layout@3/dist/isotope.pkgd.min.js"></script>
 
-    <title>Turn on the Light | Site Tracker</title>
+    <title>Legends | Site Tracker</title>
   </head>
   <body>
     <nav class="desktop">
@@ -42,14 +41,14 @@
           </ul>
         </li>
         <li>
-          <a href="legends.html">Legends</a>
+          <a href="legends.html" class="current">Legends</a>
           <ul>
             <li><a href="legends.html">Thread List</a></li>
             <li><a href="legends-charts.html">Charts</a></li>
           </ul>
         </li>
         <li>
-          <a href="totl.html" class="current">Turn on the Light</a>
+          <a href="totl.html">Turn on the Light</a>
           <ul>
             <li><a href="totl.html">Thread List</a></li>
             <li><a href="totl-charts.html">Charts</a></li>
@@ -79,14 +78,14 @@
               </ul>
             </li>
             <li>
-              <a href="legends.html">Legends</a>
+              <a href="legends.html" class="current">Legends</a>
               <ul>
                 <li><a href="legends.html">Thread List</a></li>
                 <li><a href="legends-charts.html">Charts</a></li>
               </ul>
             </li>
             <li>
-              <a href="totl.html" class="current">Turn on the Light</a>
+              <a href="totl.html">Turn on the Light</a>
               <ul>
                 <li><a href="totl.html">Thread List</a></li>
                 <li><a href="totl-charts.html">Charts</a></li>
@@ -95,11 +94,12 @@
           </ul>
         </div>
     </nav>
-    <main class="tracker">
+    <main class="tracker charts">
       <div class="loading"><i class="fa-solid fa-spinner-third fa-spin"></i></div>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script type="text/javascript" src="./src/js/static.js"></script>
-    <script type="module" src="./src/js/main.js"></script>
-    <script type="module" src="./src/js/totl.js"></script>
+    <script type="module" src="./src/js/charts.js"></script>
+    <script type="module" src="./src/js/legends-charts.js"></script>
   </body>
 </html>
