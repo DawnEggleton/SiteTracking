@@ -1,3 +1,12 @@
+function toggleMenu(e) {
+    e.parentNode.classList.toggle('is-open');
+}
+function capitalize(str, separators) {
+    separators = separators || [ ' ' ];
+    var regex = new RegExp('(^|[' + separators.join('') + '])(\\w)', 'g');
+    return str.replace(regex, function(x) { return x.toUpperCase(); });
+}
+
 export async function fetchChartData(endpoint, baseURL) {
     const data = await fetch(`/api/fetchNotion-${endpoint}`)
     .then(response => response.json())
