@@ -270,6 +270,10 @@ main {
 .thread.status-start a {
     color: var(--text-on-accent);
 }
+.thread--character {
+  color: var(--text-body);
+  font-weight: 700;
+}
 .thread--title {
     font-size: 1.2rem;
     font-family: var(--font-accent);

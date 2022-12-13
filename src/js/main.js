@@ -131,32 +131,25 @@ function setIsotope() {
         var comboFilter = comboFilters.join(', ');
         return comboFilter;
     }
-    
     var $container;
     var filters = {};
 
-    $(function(){
+    $container = $('.grid-container');
+    $container.isotope();
+    // do stuff when checkbox change
+    $('.filters').on( 'change', function( jQEvent ) {
+        var $checkbox = $( jQEvent.target );
+        manageCheckbox( $checkbox );
 
-        $container = $('.grid-container');
+        var comboFilter = getComboFilter( filters );
 
-
-        $container.isotope();
-        // do stuff when checkbox change
-        $('.filters').on( 'change', function( jQEvent ) {
-            var $checkbox = $( jQEvent.target );
-            manageCheckbox( $checkbox );
-
-            var comboFilter = getComboFilter( filters );
-
-            $container.isotope({ 
-                itemSelector: '.grid-item',
-                percentPosition: true,
-                filter: comboFilter
-            });
-
+        $container.isotope({ 
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            filter: comboFilter
         });
-
     });
+    $container.isotope('layout');
 }
 
 export async function fetchData(endpoint, baseURL) {
@@ -198,9 +191,8 @@ export async function fetchData(endpoint, baseURL) {
                 <b>Turn</b>
                 <label class="all is-checked"><input type="checkbox" class="all" value="" checked=""><span>Any Turn</span></label>
                 <label><input type="checkbox" value=".status-mine"><span>Mine</span></label>
-                <label><input type="checkbox" value=".status-start"><span>Mine (Upcoming)</span></label>
                 <label><input type="checkbox" value=".status-theirs"><span>Theirs</span></label>
-                <label><input type="checkbox" value=".status-upcoming"><span>Theirs (Upcoming)</span></label>
+                <label><input type="checkbox" value=".status-planned"><span>Planned</span></label>
                 <label><input type="checkbox" value=".status-done"><span>Completed</span></label>
             </div>
             <div class="filter-group" data-filter-group="type">
@@ -269,7 +261,12 @@ export async function fetchData(endpoint, baseURL) {
 
             sectionedThreads.forEach(thread => {
                 let charactersArray = thread.featuring.map(character => `<a href="${baseURL}?showuser=${character.id}">${character.name}</a>`);
-                let partnersArray = thread.partners.map(partner => `<a href="${baseURL}?showuser=${partner.id}">${partner.name}</a>`);
+                let partnersArray;
+                if(baseURL !== `https://killyourheroeshp.jcink.net/`) {
+                    partnersArray = thread.partners.map(partner => `<a href="${baseURL}?showuser=${partner.id}">${partner.name}</a>`);
+                } else {
+                    partnersArray = thread.partners.map(partner => `<a href="${baseURL}?showtopic=${partner.id}">${partner.name}</a>`);
+                }
                 let partnersClasses = thread.partners.map(partner => `partner-${partner.name}`).join(' ');
                 let charactersString, partnersString;
                 if(charactersArray.length > 2) {
@@ -310,7 +307,7 @@ export async function fetchData(endpoint, baseURL) {
                 }
 
                 html += `<div class="thread lux-track status-${thread.status} ${thread.character.split(' ')[0]} delay--${delayClass} type--${thread.type} ${partnersClasses} grid-item">
-                    <b class="thread--character">${thread.character}</b>
+                    <a class="thread--character" href="${baseURL}?showuser=${thread.character.split('#')[1]}">${thread.character.split('#')[0]}</a>
                     <a href="${baseURL}?showtopic=${thread.id}" target="_blank" class="thread--title">${capitalize(thread.title, [`-`, `'`])}</a>
                     <span class="thread--feature">ft. ${charactersString}</span>
                     <span class="thread--partners">Writing with ${partnersString}</span>
@@ -386,9 +383,8 @@ export async function fetchDataCombined() {
                 <b>Turn</b>
                 <label class="all is-checked"><input type="checkbox" class="all" value="" checked=""><span>Any Turn</span></label>
                 <label><input type="checkbox" value=".status-mine"><span>Mine</span></label>
-                <label><input type="checkbox" value=".status-start"><span>Mine (Upcoming)</span></label>
                 <label><input type="checkbox" value=".status-theirs"><span>Theirs</span></label>
-                <label><input type="checkbox" value=".status-upcoming"><span>Theirs (Upcoming)</span></label>
+                <label><input type="checkbox" value=".status-planned"><span>Planned</span></label>
                 <label><input type="checkbox" value=".status-done"><span>Completed</span></label>
             </div>
             <div class="filter-group" data-filter-group="type">
@@ -457,7 +453,12 @@ export async function fetchDataCombined() {
 
             sectionedThreads.forEach(thread => {
                 let charactersArray = thread.featuring.map(character => `<a href="${thread.siteURL}?showuser=${character.id}">${character.name}</a>`);
-                let partnersArray = thread.partners.map(partner => `<a href="${thread.siteURL}?showuser=${partner.id}">${partner.name}</a>`);
+                let partnersArray;
+                if(thread.siteURL !== `https://killyourheroeshp.jcink.net/`) {
+                    partnersArray = thread.partners.map(partner => `<a href="${thread.siteURL}?showuser=${partner.id}">${partner.name}</a>`);
+                } else {
+                    partnersArray = thread.partners.map(partner => `<a href="${thread.siteURL}?showtopic=${partner.id}">${partner.name}</a>`);
+                }
                 let partnersClasses = thread.partners.map(partner => `partner-${partner.name}`).join(' ');
                 let charactersString, partnersString;
                 if(charactersArray.length > 2) {
@@ -498,7 +499,7 @@ export async function fetchDataCombined() {
                 }
 
                 html += `<div class="thread lux-track status-${thread.status} ${thread.character.split(' ')[0]} delay--${delayClass} type--${thread.type} ${partnersClasses} grid-item">
-                    <b class="thread--character">${thread.character}</b>
+                    <a class="thread--character" href="${thread.siteURL}?showuser=${thread.character.split('#')[1]}">${thread.character.split('#')[0]}</a>
                     <a href="${thread.siteURL}?showtopic=${thread.id}" target="_blank" class="thread--title">${capitalize(thread.title, [`-`, `'`])}</a>
                     <span class="thread--feature">ft. ${charactersString}</span>
                     <span class="thread--partners">Writing with ${partnersString}</span>
