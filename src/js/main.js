@@ -149,7 +149,9 @@ function setIsotope() {
             filter: comboFilter
         });
     });
-    $container.isotope('layout');
+    setTimeout(() => {
+        $container.isotope('layout');
+    }, 100);
 }
 
 export async function fetchData(endpoint, baseURL) {
