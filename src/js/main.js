@@ -308,7 +308,7 @@ export async function fetchData(endpoint, baseURL) {
 
                 html += `<div class="thread lux-track status-${thread.status} ${thread.character.split(' ')[0]} delay--${delayClass} type--${thread.type} ${partnersClasses} grid-item">
                     <a class="thread--character" href="${baseURL}?showuser=${thread.character.split('#')[1]}">${thread.character.split('#')[0]}</a>
-                    <a href="${baseURL}?showtopic=${thread.id}" target="_blank" class="thread--title">${capitalize(thread.title, [`-`, `'`])}</a>
+                    <a href="${baseURL}?showtopic=${thread.id}&view=getnewpost" target="_blank" class="thread--title">${capitalize(thread.title, [`-`, `'`])}</a>
                     <span class="thread--feature">ft. ${charactersString}</span>
                     <span class="thread--partners">Writing with ${partnersString}</span>
                     ${icDate}
@@ -500,7 +500,7 @@ export async function fetchDataCombined() {
 
                 html += `<div class="thread lux-track status-${thread.status} ${thread.character.split(' ')[0]} delay--${delayClass} type--${thread.type} ${partnersClasses} grid-item">
                     <a class="thread--character" href="${thread.siteURL}?showuser=${thread.character.split('#')[1]}">${thread.character.split('#')[0]}</a>
-                    <a href="${thread.siteURL}?showtopic=${thread.id}" target="_blank" class="thread--title">${capitalize(thread.title, [`-`, `'`])}</a>
+                    <a href="${thread.siteURL}?showtopic=${thread.id}&view=getnewpost" target="_blank" class="thread--title">${capitalize(thread.title, [`-`, `'`])}</a>
                     <span class="thread--feature">ft. ${charactersString}</span>
                     <span class="thread--partners">Writing with ${partnersString}</span>
                     ${icDate}
